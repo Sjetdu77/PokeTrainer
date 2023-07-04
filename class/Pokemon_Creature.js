@@ -108,6 +108,8 @@ Pokemon_Creature.init({
         type: DataTypes.INTEGER,
         defaultValue: 0
     },
+    iv: DataTypes.RANGE(DataTypes.INTEGER),
+    ev: DataTypes.RANGE(DataTypes.INTEGER),
     exchanged: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
@@ -126,6 +128,4 @@ Pokemon_Creature.init({
     modelName: 'creature'
 });
 
-module.exports = {
-    Pokemon_Creature
-}
+module.exports = { Pokemon_Creature };

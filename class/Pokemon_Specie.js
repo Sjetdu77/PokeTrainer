@@ -57,7 +57,7 @@ Pokemon_Specie.init({
         allowNull: true
     },
     curbXP: {
-        type: DataTypes.STRING,
+        type: DataTypes.ENUM('Erratique', 'Rapide', 'Moyenne', 'Parabolique', 'Lente', 'Fluctuante'),
         allowNull: true
     },
     starter: {

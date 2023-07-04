@@ -22,6 +22,11 @@ Pokemon_Trainer.init({
         type: DataTypes.STRING,
         allowNull: true
     },
+    yens: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0
+    }
+    /*,
     getLuckyEgg: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
@@ -29,7 +34,7 @@ Pokemon_Trainer.init({
     getExpCharm: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
-    }
+    }*/
 }, {
     sequelize: dataBaseTable,
     modelName: 'trainer'
