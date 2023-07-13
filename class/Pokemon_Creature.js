@@ -108,8 +108,12 @@ Pokemon_Creature.init({
         type: DataTypes.INTEGER,
         defaultValue: 0
     },
-    iv: DataTypes.RANGE(DataTypes.INTEGER),
-    ev: DataTypes.RANGE(DataTypes.INTEGER),
+    variant: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    iv: DataTypes.JSON,
+    ev: DataTypes.JSON,
     exchanged: {
         type: DataTypes.BOOLEAN,
         defaultValue: false

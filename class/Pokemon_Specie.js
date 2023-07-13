@@ -52,10 +52,6 @@ Pokemon_Specie.init({
     },
     english_name: DataTypes.STRING,
     name: DataTypes.STRING,
-    baseXP: {
-        type: DataTypes.INTEGER,
-        allowNull: true
-    },
     curbXP: {
         type: DataTypes.ENUM('Erratique', 'Rapide', 'Moyenne', 'Parabolique', 'Lente', 'Fluctuante'),
         allowNull: true
@@ -66,7 +62,7 @@ Pokemon_Specie.init({
     }
 }, {
     sequelize: dataBaseTable,
-    modelName: 'specie',
+    modelName: 'species',
     timestamps: false
 });
 

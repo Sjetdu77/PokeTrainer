@@ -17,6 +17,7 @@ Pokemon_Trainer.init({
         primaryKey: true
     },
     name: DataTypes.STRING,
+    gender: DataTypes.ENUM('Garçon', 'Fille', '?'),
     userId: DataTypes.STRING,
     avatar: {
         type: DataTypes.STRING,
