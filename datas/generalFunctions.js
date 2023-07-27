@@ -1,19 +1,9 @@
 const { ChatInputCommandInteraction } = require('discord.js');
 const { Pokemon_Trainer, Pokemon_Specie, Pokemon_Creature } = require('../classes');
 const { Op } = require("sequelize");
+const regionsAndCities = require('regionsAndCities.json');
 
-let regions = [
-    'Kanto',
-    'Johto',
-    'Hoenn',
-    'Sinnoh',
-    'Unys',
-    'Kalos',
-    'Alola',
-    'Galar',
-    'Hisui',
-    'Paldea'
-]
+let regions = Object.keys(regionsAndCities);
 
 /**
  * 

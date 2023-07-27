@@ -9,7 +9,8 @@ Pokemon_Type.init({
     name: {
         type: DataTypes.STRING,
         primaryKey: true
-    }
+    },
+    english_name: DataTypes.STRING
 }, {
     sequelize: dataBaseTable,
     modelName: 'types',

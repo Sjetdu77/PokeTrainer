@@ -26,7 +26,11 @@ Pokemon_Trainer.init({
     yens: {
         type: DataTypes.INTEGER,
         defaultValue: 0
-    }
+    },
+    origins: {
+        type: DataTypes.STRING,
+        defaultValue: 'Inconnu'
+    },
     /*,
     getLuckyEgg: {
         type: DataTypes.BOOLEAN,

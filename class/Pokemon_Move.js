@@ -6,13 +6,12 @@ class Pokemon_Move extends Model {
 };
 
 Pokemon_Move.init({
-    id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
+    name: {
+        type: DataTypes.STRING,
         primaryKey: true
     },
-    name: DataTypes.STRING,
-    category: DataTypes.ENUM(['Physique', 'Spécial', 'Statut']),
+    english_name: DataTypes.STRING,
+    category: DataTypes.ENUM(['Physique', 'Spécial', 'Statut', '???']),
     pp: {
         type: DataTypes.INTEGER,
         allowNull: true

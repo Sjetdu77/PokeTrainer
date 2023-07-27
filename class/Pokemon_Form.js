@@ -8,6 +8,14 @@ Pokemon_Form.init({
         type: DataTypes.STRING,
         defaultValue: 'Base'
     },
+    english_name: {
+        type: DataTypes.STRING,
+        defaultValue: 'Base'
+    },
+    image: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
     origin: DataTypes.STRING,
     baseStats: {
         type: DataTypes.JSON,

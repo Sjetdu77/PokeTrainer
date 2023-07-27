@@ -36,17 +36,17 @@ const moves_species = dataBaseTable.define('moves_species', {
 Pokemon_Trainer.Team        = Pokemon_Trainer.hasMany(Pokemon_Creature, { foreignKey: { allowNull: true, name: 'team' } });
 Pokemon_Creature.Trainer    = Pokemon_Creature.belongsTo(Pokemon_Trainer, { foreignKey: { allowNull: true, name: 'team' } });
 
-Pokemon_Creature.Ability    = Pokemon_Creature.hasOne(Pokemon_Ability);
-Pokemon_Ability.Creatures   = Pokemon_Ability.belongsToMany(Pokemon_Creature, { through: 'ability_creatures' });
+Pokemon_Creature.Ability    = Pokemon_Creature.belongsTo(Pokemon_Ability);
+Pokemon_Ability.Creatures   = Pokemon_Ability.hasMany(Pokemon_Creature);
 
-Pokemon_Creature.Held       = Pokemon_Creature.hasOne(Pokemon_Item, { foreignKey: { allowNull: true, name: 'held' } });
-Pokemon_Item.Creatures      = Pokemon_Item.belongsToMany(Pokemon_Creature, { through: 'item_held' });
+Pokemon_Creature.Held       = Pokemon_Creature.belongsTo(Pokemon_Item, { foreignKey: { allowNull: true, name: 'held' } });
+Pokemon_Item.Creatures      = Pokemon_Item.hasMany(Pokemon_Creature);
 
 Pokemon_Specie.Forms        = Pokemon_Specie.hasMany(Pokemon_Form);
 Pokemon_Form.Species        = Pokemon_Form.belongsTo(Pokemon_Specie);
 
-Pokemon_Form.Type           = Pokemon_Form.belongsToMany(Pokemon_Type, { through: 'types_species' });
-Pokemon_Type.Species        = Pokemon_Type.belongsToMany(Pokemon_Form, { through: 'types_species' });
+Pokemon_Form.Type           = Pokemon_Form.belongsToMany(Pokemon_Type, { through: 'types_species', timestamps: false });
+Pokemon_Type.Species        = Pokemon_Type.belongsToMany(Pokemon_Form, { through: 'types_species', timestamps: false });
 
 Pokemon_Specie.Abilities    = Pokemon_Specie.belongsToMany(Pokemon_Ability, { through: abilities_species });
 Pokemon_Ability.Species     = Pokemon_Ability.belongsToMany(Pokemon_Specie, { through: abilities_species });
@@ -54,11 +54,11 @@ Pokemon_Ability.Species     = Pokemon_Ability.belongsToMany(Pokemon_Specie, { th
 Pokemon_Form.Moves          = Pokemon_Form.belongsToMany(Pokemon_Move, { through: moves_species });
 Pokemon_Move.Species        = Pokemon_Move.belongsToMany(Pokemon_Form, { through: moves_species });
 
-Pokemon_Trainer.Inventory   = Pokemon_Trainer.belongsToMany(Pokemon_Item, { through: 'inventories' });
-Pokemon_Item.Trainers       = Pokemon_Item.belongsToMany(Pokemon_Trainer, { through: 'inventories' });
+Pokemon_Trainer.Inventory   = Pokemon_Trainer.belongsToMany(Pokemon_Item, { through: 'inventories', timestamps: false });
+Pokemon_Item.Trainers       = Pokemon_Item.belongsToMany(Pokemon_Trainer, { through: 'inventories', timestamps: false });
 
-Pokemon_Move.Type           = Pokemon_Move.hasOne(Pokemon_Type);
-Pokemon_Type.Moves          = Pokemon_Type.belongsToMany(Pokemon_Move, { through: 'type_moves' });
+Pokemon_Move.Type           = Pokemon_Move.belongsTo(Pokemon_Type);
+Pokemon_Type.Moves          = Pokemon_Type.hasMany(Pokemon_Move);
 
 Pokemon_Creature.Form       = Pokemon_Creature.belongsTo(Pokemon_Form);
 Pokemon_Form.Creatures      = Pokemon_Form.hasMany(Pokemon_Creature);
@@ -70,19 +70,7 @@ Pokemon_Type.Resistance     = Pokemon_Type.belongsToMany(Pokemon_Type, { as: 're
 
 
 async function synchronize(restart = false) {
-    await Pokemon_Specie.sync();
-    await Pokemon_Form.sync();
-    await Pokemon_Type.sync();
-    await Pokemon_Creature.sync();
-    await Pokemon_Trainer.sync();
-    await Pokemon_Move.sync();
-    await Pokemon_Ability.sync();
-    await Pokemon_Item.sync();
-
-    await specie_evolution.sync();
-    await resistances.sync();
-    await abilities_species.sync();
-    await moves_species.sync();
+    await dataBaseTable.sync();
 
     if (!restart) {
         await Pokemon_Creature.destroy({ where: {

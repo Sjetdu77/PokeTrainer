@@ -6,11 +6,11 @@ class Pokemon_Ability extends Model {
 }
 
 Pokemon_Ability.init({
-    id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
+    name: {
+        type: DataTypes.STRING,
         primaryKey: true
     },
+    english_name: DataTypes.STRING,
     effectOnBattle: {
         type: DataTypes.STRING,
         allowNull: true

@@ -6,13 +6,15 @@ class Pokemon_Item extends Model {
 };
 
 Pokemon_Item.init({
-    id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
+    name: {
+        type: DataTypes.STRING,
         primaryKey: true
     },
-    name: DataTypes.STRING,
-    type: DataTypes.ENUM('Objet', 'Balls', 'Lettre', 'Combat', 'Médicament', 'CT/CS', 'Baie', 'Clé', 'Ingrédient'),
+    english_name: DataTypes.STRING,
+    type: {
+        type: DataTypes.ENUM('Objet', 'Balls', 'Lettre', 'Combat', 'Médicament', 'CT/CS', 'Baie', 'Clé', 'Ingrédient'),
+        defaultValue: 'Objet'
+    },
     icon: {
         type: DataTypes.STRING,
         allowNull: true
@@ -21,7 +23,10 @@ Pokemon_Item.init({
         type: DataTypes.STRING,
         allowNull: true
     },
-    sellPrice: DataTypes.INTEGER,
+    sellPrice: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0
+    },
     buyable: {
         type: DataTypes.BOOLEAN,
         defaultValue: true
@@ -40,7 +45,8 @@ Pokemon_Item.init({
     }
 }, {
     sequelize: dataBaseTable,
-    modelName: 'items'
+    modelName: 'items',
+    timestamps: false
 });
 
 module.exports = { Pokemon_Item }

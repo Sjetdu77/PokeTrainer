@@ -1,8 +1,13 @@
 config.json
+jsconfig.json
+package.json
+*.txt
 fill.js
 pokebase.sqlite
 accessToLists.js
+createDatas.js
 deploy-commands.js
 .env
 node_modules
 node_modules/
+datas/moves.json
