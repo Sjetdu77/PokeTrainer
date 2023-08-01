@@ -1,5 +1,5 @@
 const { DataTypes, Model } = require('sequelize');
-const { dataBaseTable } = require('./table_models.js');
+const { dataBaseTable } = require('../table/table_models.js');
 
 class Pokemon_Form extends Model {};
 

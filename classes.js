@@ -1,13 +1,13 @@
 const { DataTypes, Op }     = require('sequelize');
-const { Pokemon_Creature }  = require('./class/Pokemon_Creature');
-const { Pokemon_Specie }    = require('./class/Pokemon_Specie');
-const { Pokemon_Trainer }   = require('./class/Pokemon_Trainer');
-const { Pokemon_Move }      = require('./class/Pokemon_Move');
-const { Pokemon_Ability }   = require('./class/Pokemon_Ability');
-const { Pokemon_Type }      = require('./class/Pokemon_Type');
-const { Pokemon_Item }      = require('./class/Pokemon_Item');
-const { Pokemon_Form }      = require('./class/Pokemon_Form');
-const { dataBaseTable }     = require('./class/table_models');
+const { Pokemon_Creature }  = require('./class/pokemon/Pokemon_Creature');
+const { Pokemon_Specie }    = require('./class/pokemon/Pokemon_Specie');
+const { Pokemon_Trainer }   = require('./class/trainer/Pokemon_Trainer');
+const { Pokemon_Move }      = require('./class/pokemon/Pokemon_Move');
+const { Pokemon_Ability }   = require('./class/pokemon/Pokemon_Ability');
+const { Pokemon_Type }      = require('./class/pokemon/Pokemon_Type');
+const { Pokemon_Item }      = require('./class/trainer/Pokemon_Item');
+const { Pokemon_Form }      = require('./class/pokemon/Pokemon_Form');
+const { dataBaseTable }     = require('./class/table/table_models');
 
 const specie_evolution = dataBaseTable.define('specie_evolution', {
     conditions: DataTypes.JSON
