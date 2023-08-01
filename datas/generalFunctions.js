@@ -1,9 +1,9 @@
 const { ChatInputCommandInteraction } = require('discord.js');
 const { Pokemon_Trainer, Pokemon_Specie, Pokemon_Creature } = require('../classes');
 const { Op } = require("sequelize");
-const regionsAndCities = require('regionsAndCities.json');
+const { regionsAndCities } = require('./regionsAndCities.js');
 
-let regions = Object.keys(regionsAndCities);
+let regions = regionsAndCities.keys();
 
 /**
  * 

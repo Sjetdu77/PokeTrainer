@@ -1,6 +1,7 @@
 config.json
 jsconfig.json
 package.json
+package-lock.json
 *.txt
 fill.js
 pokebase.sqlite

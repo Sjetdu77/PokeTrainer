@@ -16,9 +16,9 @@ Pokemon_Trainer.init({
         autoIncrement: true,
         primaryKey: true
     },
+    userId: DataTypes.STRING,
     name: DataTypes.STRING,
     gender: DataTypes.ENUM('Garçon', 'Fille', '?'),
-    userId: DataTypes.STRING,
     avatar: {
         type: DataTypes.STRING,
         allowNull: true
@@ -31,15 +31,6 @@ Pokemon_Trainer.init({
         type: DataTypes.STRING,
         defaultValue: 'Inconnu'
     },
-    /*,
-    getLuckyEgg: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false
-    },
-    getExpCharm: {
-        type: DataTypes.BOOLEAN,
-        defaultValue: false
-    }*/
 }, {
     sequelize: dataBaseTable,
     modelName: 'trainer'

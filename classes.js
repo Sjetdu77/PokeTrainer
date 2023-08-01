@@ -79,14 +79,6 @@ async function synchronize(restart = false) {
                 { place: 'wild' }
             ]
         }});
-    
-        const allTrainers = await Pokemon_Trainer.findAll();
-        for (const trainer of allTrainers) {
-            const creatures = await trainer.getCreatures();
-            if (creatures.length === 0) {
-                trainer.destroy();
-            }
-        }
     }
 }
 
